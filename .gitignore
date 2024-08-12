@@ -1,0 +1,9 @@
+*.py[co]
+*.log
+__pycache__/
+wandb/
+logs/
+saved/
+cache/
+cache_data/
+/*/train.sh
