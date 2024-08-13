@@ -1,10 +1,21 @@
-Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero-shot Soundscape Mapping"** , accepted at ACM MM 2024.\
+Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero-shot Soundscape Mapping"**, accepted at ACM MM 2024.\
 [arxiv](https://arxiv.org/abs/2309.10667)
 
-[data](https://drive.google.com/drive/folders/1Qgh9TNuZ3VZjf6Y6ffMcX5WXL6AHzerP?usp=share_link)
+**Dataset**
 
-[model-checkpoints](https://drive.google.com/drive/folders/1Qgh9TNuZ3VZjf6Y6ffMcX5WXL6AHzerP?usp=share_link)
+[Request for data](https://docs.google.com/forms/d/e/1FAIpQLSdQQrewZj8jnHihKKdyZ22H4Zw6YxbUHBPddIpgbGfmCxZypQ/viewform) used in our work, available to be read by `webdataset` for both `GeoSound` and `SoundingEarth` dataset. Each sample contains `CLAP-processed` mel-spectrogram features for audio, satellite image and associated metadata. 
 
+To download raw audios from the audio sources: `aporee`, `freesound`, and `iNaturalist`, create account (and request for API key if necessary), then find respective metadata `.csv` files located [here](https://drive.google.com/drive/folders/1KA2NSAcc92ZTFqDC_l19VCpK8nHbvlnF?usp=sharing), and utilise the following data-download scripts for each of these sources: 
+
+`aporee`: [./geoclap/data_prep/get_SoundingEarth_raw_audio.sh](https://github.com/mvrl/PSM/blob/main/geoclap/data_prep/get_SoundingEarth_raw_audio.sh)
+
+`iNaturalist`: [./geoclap/data_prep/iNaturalist_download.py](https://github.com/mvrl/PSM/blob/main/geoclap/data_prep/iNaturalist_download.py)
+
+`freesound`: [./geoclap/data_prep/freesound_download.py](https://github.com/mvrl/PSM/blob/main/geoclap/data_prep/freesound_download.py)
+
+`yfcc`: For YFCC, first `yfcc-videos` need to be downloaded and then audio should be extracted from those videos. Refer to `yahoo100m` section of [./geoclap/data_prep/README.md](https://github.com/mvrl/PSM/blob/main/geoclap/data_prep/README.md) for details on this.
+
+**Steps:**
 
 1. Clone this repo
     ```
@@ -25,23 +36,22 @@ Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero
     source /opt/conda/bin/activate /opt/conda/envs/sat2audio_demo
     ```
 
-3. Please refer to `./data_prep/README.md` for details on SoundingEarth and instructions on how to download Sentinel2 imagery. Some scipts for basic pre-processing steps required for experiments related to `PSM` are also provided there.
+<!-- 3. Please refer to `./data_prep/README.md` for details on SoundingEarth and instructions on how to download Sentinel2 imagery. Some scipts for basic pre-processing steps required for experiments related to `PSM` are also provided there. -->
 
-4. Copy the pre-trained checkpoint of `SATMAE` named as `pretrain-vit-base-e199.pth` provided in [this google drive folder](https://drive.google.com/drive/folders/1Qgh9TNuZ3VZjf6Y6ffMcX5WXL6AHzerP?usp=share_link) to the location pointed by `cfg.satmae_pretrained_ckpt`.
+3. Copy the pre-trained checkpoint of `SATMAE` named as `pretrain-vit-base-e199.pth` provided in [this google drive folder](https://drive.google.com/drive/folders/1NJyba2hoQen_lDCgm9S4MymrsIZDQmgS?usp=share_link) to the location pointed by `cfg.satmae_pretrained_ckpt`.
 
-5. Check both `config.py` and `./data_prep/config.py` to setup relevant paths by manually creating relevant directories. 
+5. Check `config.py` and setup paths by manually creating relevant directories if needed.
 
-5. Now assuming that the data is downloaded and paths in `config.py` are properly setup, we are now ready to run experiments related to GeoCLAP. Change directory by one step in hierarchy so that `geoclap` can be run as a python module.
+5. Assuming that the data is downloaded and paths in `config.py` are properly setup, we are now ready to run experiments related to PSM. Change directory such that we can run `geoclap` as a python module.
     ```
     cd ../
     ```
 
-6. Assuming [wandb](https://wandb.ai/home) is set up correctly for logging purpose, we can launch the PSM training as follows:
+6. Assuming [wandb](https://wandb.ai/home) is set up correctly for logging purpose, we can now launch the PSM training as follows:
     ```
    python -m geoclap.train --num_workers 8 \
                             --probabilistic true \
-                            --metadata_type \
-                            --latlong_month_time_asource_tsource \
+                            --metadata_type latlong_month_time_asource_tsource \
                             --run_name GeoSound_pcmepp_metadata_sentinel \
                             --dataset_type GeoSound \
                             --sat_type sentinel \
@@ -60,6 +70,10 @@ Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero
                                --meta_droprate 0 \
                                --test_mel_index 0 
     ```
+
+**Model Checkpoints**
+
+The best checkpoints for our experiments in the paper can be found [here](https://drive.google.com/drive/folders/1RaMykYcGeZTJ0W3nLuVVDv95azojt1T4?usp=sharing). Please note that these checkpoints are saved under directory with `wandb`-generated random name for each experiments, therefore refer to the file: [./geoclap/ckpt_paths.py](https://github.com/mvrl/PSM/blob/main/geoclap/ckpt_paths.py) to find appropriate checkpoint path.
 
 **Citation:**
 ```

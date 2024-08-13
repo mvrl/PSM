@@ -18,9 +18,9 @@ caption_sources = ["meta","qwen","pengi"]
 audio_source_map = {'yfcc':0,'iNat':1, 'aporee':2,'freesound':3}
 caption_source_map = {'meta':0,"qwen":1,"pengi":2}
 
-clap_score_df = pd.read_csv(os.path.join(cfg.GeoSound_webdataset_path,"clap_score_geosound.csv"))
-pengi_caption = pd.read_json(os.path.join(cfg.GeoSound_webdataset_path,"geosound_audio_caption_pengi.json"),lines=True)
-qwen_caption = pd.read_json(os.path.join(cfg.GeoSound_webdataset_path,"geosound_audio_caption_qwen.json"),lines=True)
+clap_score_df = pd.read_csv(os.path.join(cfg.data_path,"clap_score_geosound.csv"))
+pengi_caption = pd.read_json(os.path.join(cfg.data_path,"geosound_audio_caption_pengi.json"),lines=True)
+qwen_caption = pd.read_json(os.path.join(cfg.data_path,"geosound_audio_caption_qwen.json"),lines=True)
 
 ## One way to implement modality dropout:
 def dropout(droprate=0.5):
