@@ -1,4 +1,4 @@
-Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero-shot Soundscape Mapping"**, accepted at ACM MM 2024.\
+Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero-Shot Soundscape Mapping"**, accepted at ACM MM 2024.\
 [arxiv](https://arxiv.org/pdf/2408.07050)
 
 **Dataset**
@@ -78,7 +78,7 @@ The best checkpoints for our experiments in the paper can be found [here](https:
 **Citation:**
 ```
 @inproceedings{khanal2024psm,
-  title = {PSM: Learning Probabilistic Embeddings for Multi-scale Zero-shot Soundscape Mapping},
+  title = {PSM: Learning Probabilistic Embeddings for Multi-scale Zero-Shot Soundscape Mapping},
   author = {Khanal, Subash and Eric, Xing and Sastry, Srikumar and Dhakal, Aayush and Xiong Zhexiao and Ahmad, Adeel and Jacobs, Nathan},
   year = {2024},
   month = nov,
