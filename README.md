@@ -1,5 +1,5 @@
 Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero-shot Soundscape Mapping"**, accepted at ACM MM 2024.\
-[arxiv](https://arxiv.org/abs/2309.10667)
+[arxiv](https://arxiv.org/pdf/2408.07050)
 
 **Dataset**
 
