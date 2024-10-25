@@ -5,7 +5,7 @@ Implementation of
 in ACM Multimedia 2024
 
 <img src='geoclap/figure.png'/>
-PSM combines image, audio, and text encoders to learn a probabilistic joint representation space. Metadata, including geolocation (l), month (m), hour (h), audio-source (a), and caption-source (t), is encoded separately and fused with image embeddings using a transformer-based metadata fusion module. For each encoder, 𝜇 and 𝜎 heads yield probabilistic embeddings, which are used for probabilistic contrastive loss.
+PSM combines satellite image, audio, and text encoders to learn a probabilistic joint representation space. Metadata, including geolocation (l), month (m), hour (h), audio-source (a), and caption-source (t), is encoded separately and fused with image embeddings using a transformer-based metadata fusion module. For each encoder, 𝜇 and 𝜎 heads yield probabilistic embeddings, which are used for probabilistic contrastive loss.
 
 ## Dataset
 
