@@ -1,8 +1,13 @@
-Implementation of **"PSM: Learning Probabilistic Embeddings for Multi-scale Zero-Shot Soundscape Mapping"**, accepted at ACM MM 2024.\
-[arxiv](https://arxiv.org/pdf/2408.07050) \
-[project page](https://subash-khanal.github.io/PSM/index.html)
+# PSM: Learning Probabilistic Embeddings for Multi-scale Zero-Shot Soundscape Mapping
+### [Project Page](https://subash-khanal.github.io/PSM/index.html) | [Paper](https://arxiv.org/pdf/2408.07050) 
+Implementation of 
+[PSM: Learning Probabilistic Embeddings for Multi-scale Zero-Shot Soundscape Mapping](https://subash-khanal.github.io/PSM/index.html)  
+in ACM Multimedia 2024
 
-**Dataset**
+<img src='geoclap/figure.png'/>
+PSM combines image, audio, and text encoders to learn a probabilistic joint representation space. Metadata, including geolocation (l), month (m), hour (h), audio-source (a), and caption-source (t), is encoded separately and fused with image embeddings using a transformer-based metadata fusion module. For each encoder, 𝜇 and 𝜎 heads yield probabilistic embeddings, which are used for probabilistic contrastive loss.
+
+## Dataset
 
 [Request for data](https://docs.google.com/forms/d/e/1FAIpQLSdQQrewZj8jnHihKKdyZ22H4Zw6YxbUHBPddIpgbGfmCxZypQ/viewform) used in our work, available to be read by `webdataset` for both `GeoSound` and `SoundingEarth` dataset. Each sample contains `CLAP-processed` mel-spectrogram features for audio, satellite image and associated metadata. 
 
@@ -16,7 +21,7 @@ To download raw audios from the audio sources: `aporee`, `freesound`, and `iNatu
 
 `yfcc`: For YFCC, first `yfcc-videos` need to be downloaded and then audio should be extracted from those videos. Refer to `yahoo100m` section of [./geoclap/data_prep/README.md](https://github.com/mvrl/PSM/blob/main/geoclap/data_prep/README.md) for details on this.
 
-**Steps:**
+## Steps
 
 1. Clone this repo
     ```
@@ -72,19 +77,19 @@ To download raw audios from the audio sources: `aporee`, `freesound`, and `iNatu
                                --test_mel_index 0 
     ```
 
-**Model Checkpoints**
+## Model Checkpoints
 
 The best checkpoints for our experiments in the paper can be found [here](https://drive.google.com/drive/folders/1RaMykYcGeZTJ0W3nLuVVDv95azojt1T4?usp=sharing). Please note that these checkpoints are saved under directory with `wandb`-generated random name for each experiments, therefore refer to the file: [./geoclap/ckpt_paths.py](https://github.com/mvrl/PSM/blob/main/geoclap/ckpt_paths.py) to find appropriate checkpoint path.
 
-**Citation:**
+## Citation
 ```
 @inproceedings{khanal2024psm,
   title = {PSM: Learning Probabilistic Embeddings for Multi-scale Zero-Shot Soundscape Mapping},
   author = {Khanal, Subash and Eric, Xing and Sastry, Srikumar and Dhakal, Aayush and Xiong Zhexiao and Ahmad, Adeel and Jacobs, Nathan},
   year = {2024},
   month = nov,
-  booktitle = {Association for Computing Machinery Multimedia (ACM Multimedia)},
+  booktitle = {ACM Multimedia},
 }
 ```
 
-Follow more works from our lab here: [The Multimodal Vision Research Laboratory (MVRL)](https://mvrl.cse.wustl.edu)
+Follow more works from our lab: [The Multimodal Vision Research Laboratory (MVRL)](https://mvrl.cse.wustl.edu)
